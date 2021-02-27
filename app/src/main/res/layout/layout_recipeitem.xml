@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#D8D6D6">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        app:cardCornerRadius="24dp"
+        app:cardMaxElevation="6dp"
+        app:cardElevation="2dp"
+        android:layout_centerInParent="true">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ECE3E3">
+            
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/picture"
+                android:src="@drawable/dinner1"
+                android:background="#ECE3E3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_below="@+id/picture"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:autoSizeMaxTextSize="32dp"
+                android:autoSizeMinTextSize="8dp"
+                android:autoSizeTextType="uniform"
+                android:id="@+id/recipe"
+                android:fontFamily="casual"
+                android:gravity="center"
+                android:text="Recipe"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:background="#ECE3E3"/>
+
+        </RelativeLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

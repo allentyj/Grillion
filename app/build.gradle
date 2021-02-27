@@ -5,6 +5,7 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+    dataBinding.enabled=true
 
     defaultConfig {
         applicationId "com.example.grillion"
@@ -36,4 +37,21 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //My Imported Dependencies
+    //RecyclerView implementation.
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    // For control over item selection of both touch and mouse driven selection
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
+
+    //CardView for holding the CircleImageView and to iterate over the RecyclerView
+    implementation "androidx.cardview:cardview:1.0.0"
+
+    //Glide, using it to upload images for the icons off of the internet. Should be easier to implement API with it.
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //CircleImageView, using this to turn the pictures of the recipes into circular icons to be clicked on.
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
