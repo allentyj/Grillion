@@ -1,6 +1,7 @@
 package com.example.grillion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View view) {
                 Log.d(DEBUG_TAG, "onClick was clicked." + mRecipes.get(position));
                 Toast.makeText(mContext, mRecipes.get(position), Toast.LENGTH_SHORT).show();
+
                 //Put in here what recipe you are going to.
             }
         });

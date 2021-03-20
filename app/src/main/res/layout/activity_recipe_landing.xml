@@ -7,4 +7,117 @@
     android:background="#D8D6D6"
     tools:context=".RecipeLanding">
 
+    <TextView
+        android:id="@+id/recipeLandingRecipeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="casual"
+        android:text="Recipe Name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recipeLandingCookTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="ex. Prep: 10 min., Cook: 10 min., Total: 20 min.,"
+        app:layout_constraintBottom_toTopOf="@+id/recipeLandingIngredients"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeLandingRecipeName" />
+
+    <TextView
+        android:id="@+id/recipeLandingIngredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="30dp"
+        android:text="ex. 3 Large eggs, 1/4 cup shredded cheddar cheese, salt and pepper to taste, green onion"
+        app:layout_constraintBottom_toTopOf="@+id/recipeLandingInstructions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeLandingCookTime" />
+
+    <TextView
+        android:id="@+id/recipeLandingInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="ex. Preheat pan to medium-low heat"
+        app:layout_constraintBottom_toTopOf="@+id/recipeLandingNotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeLandingIngredients" />
+
+    <TextView
+        android:id="@+id/recipeLandingNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="No Notes Currently"
+        app:layout_constraintBottom_toTopOf="@+id/recipeLandingEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeLandingInstructions" />
+
+    <EditText
+        android:id="@+id/recipeLandingEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="Type to add notes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeLandingNotes" />
+
+    <Button
+        android:id="@+id/recipeLandingSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Save"
+        app:layout_constraintEnd_toStartOf="@+id/recipeLandingDeleteButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeLandingEditText" />
+
+    <Button
+        android:id="@+id/recipeLandingDeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toStartOf="@+id/recipeLandingUpdateButton"
+        app:layout_constraintStart_toEndOf="@+id/recipeLandingSaveButton"
+        app:layout_constraintTop_toBottomOf="@+id/recipeLandingEditText" />
+
+    <Button
+        android:id="@+id/recipeLandingUpdateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recipeLandingDeleteButton"
+        app:layout_constraintTop_toBottomOf="@+id/recipeLandingEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

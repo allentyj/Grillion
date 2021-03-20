@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="casual"
@@ -48,60 +48,54 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recentlyAddedScroll"
+        app:layout_constraintBottom_toTopOf="@+id/recentlyAddedRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favoriteTitleTextView" />
 
-    <HorizontalScrollView
-        android:id="@+id/recentlyAddedScroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recentlyAddedRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_marginBottom="20dp"
-        android:background="#ECE3E3"
-        app:layout_constraintBottom_toTopOf="@+id/addYourThoughtsTextView"
-        app:layout_constraintTop_toBottomOf="@+id/recentlyAddedTextView"
-        tools:layout_editor_absoluteX="411dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </HorizontalScrollView>
+        app:layout_constraintBottom_toTopOf="@id/addYourThoughtsTextView"
+        app:layout_constraintTop_toBottomOf="@id/recentlyAddedTextView"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/addYourThoughtsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:fontFamily="casual"
         android:text="Add Your Thoughts"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/addYourThoughtsScroll"
+        app:layout_constraintBottom_toTopOf="@+id/addYourThoughtsRecylerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recentlyAddedScroll" />
+        app:layout_constraintTop_toBottomOf="@+id/recentlyAddedRecyclerView" />
 
-    <HorizontalScrollView
-        android:id="@+id/addYourThoughtsScroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/addYourThoughtsRecylerView"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_marginBottom="20dp"
-        android:background="#ECE3E3"
-        app:layout_constraintBottom_toTopOf="@+id/unratedTextView"
+        app:layout_constraintBottom_toTopOf="@id/unratedTextView"
+        app:layout_constraintTop_toBottomOf="@+id/addYourThoughtsTextView" /><![CDATA[
+"
         app:layout_constraintTop_toBottomOf="@+id/addYourThoughtsTextView"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="-16dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </HorizontalScrollView>
+
+
+
+
+
+
+    ]]>
 
     <TextView
         android:id="@+id/unratedTextView"
@@ -116,23 +110,18 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/unratedScroll"
+        app:layout_constraintBottom_toTopOf="@+id/unratedRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addYourThoughtsScroll" />
+        app:layout_constraintTop_toBottomOf="@+id/addYourThoughtsRecylerView" />
 
-    <HorizontalScrollView
-        android:id="@+id/unratedScroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/unratedRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="#ECE3E3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/unratedTextView"
-        tools:layout_editor_absoluteX="-16dp">
+        tools:layout_editor_absoluteX="0dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </HorizontalScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

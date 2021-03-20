@@ -69,7 +69,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:inputType="textPassword"
+        android:inputType="textShortMessage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBarTextView" />
 

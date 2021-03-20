@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="casual"
@@ -48,60 +48,45 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recentlyUpdatedScroll"
+        app:layout_constraintBottom_toTopOf="@+id/recentlyUpdatedRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quickRecipeTitleTextView" />
 
-    <HorizontalScrollView
-        android:id="@+id/recentlyUpdatedScroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recentlyUpdatedRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_marginBottom="20dp"
-        android:background="#ECE3E3"
-        app:layout_constraintBottom_toTopOf="@+id/hotTodayTextView"
+        app:layout_constraintBottom_toBottomOf="@id/hotTodayTextView"
         app:layout_constraintTop_toBottomOf="@+id/recentlyUpdatedTextView"
-        tools:layout_editor_absoluteX="145dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
-    </HorizontalScrollView>
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/hotTodayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:fontFamily="casual"
         android:text="Hot Today"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/hotTodayScroll"
+        app:layout_constraintBottom_toTopOf="@+id/hotTodayRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recentlyUpdatedScroll" />
+        app:layout_constraintTop_toBottomOf="@+id/recentlyUpdatedRecyclerView" />
 
-    <HorizontalScrollView
-        android:id="@+id/hotTodayScroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hotTodayRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_marginBottom="20dp"
-        android:background="#ECE3E3"
-        app:layout_constraintBottom_toTopOf="@+id/grillionPicksTextView"
+        app:layout_constraintBottom_toBottomOf="@id/grillionPicksTextView"
         app:layout_constraintTop_toBottomOf="@+id/hotTodayTextView"
-        tools:layout_editor_absoluteX="0dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </HorizontalScrollView>
+        tools:layout_editor_absoluteX="-16dp" />
 
     <TextView
         android:id="@+id/grillionPicksTextView"
@@ -116,23 +101,17 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/grillionPicksScroll"
+        app:layout_constraintBottom_toTopOf="@+id/grillionPicksRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hotTodayScroll" />
+        app:layout_constraintTop_toBottomOf="@+id/hotTodayRecyclerView" />
 
-    <HorizontalScrollView
-        android:id="@+id/grillionPicksScroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/grillionPicksRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:background="#ECE3E3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grillionPicksTextView"
-        tools:layout_editor_absoluteX="-16dp">
+        tools:layout_editor_absoluteX="0dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </HorizontalScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
