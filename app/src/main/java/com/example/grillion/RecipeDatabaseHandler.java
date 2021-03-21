@@ -2,6 +2,7 @@ package com.example.grillion;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -24,12 +25,10 @@ public class RecipeDatabaseHandler extends SQLiteOpenHelper{
     //Columns for TABLE_RECIPE_TO_LIST
     private static final String COLUMN_ING_ID = "Ingredient_ID";
     private static final String COLUMN_ING = "Ingredient";
-    private static final String COLUMN_QUANTITY = "Ingredient_Value";
 
     //Columns for TABLE_USER_INPUT
     private static final String COLUMN_INP_ID = "Input_ID";
     private static final String COLUMN_NOTES = "Notes";
-    private static final String COLUMN_NOTES_LINK = "Notes_JSON";
 
     public RecipeDatabaseHandler(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -48,16 +47,14 @@ public class RecipeDatabaseHandler extends SQLiteOpenHelper{
         //Creates the recipe list table
         String CREATE_TABLE_RECIPE_TO_LIST = "CREATE TABLE " +
                 TABLE_IDENTIFIERS + "(" +
-                COLUMN_ING_ID + " INTEGER PRIMARY KEY, " +
-                COLUMN_ING + " TEXT, " +
-                COLUMN_QUANTITY + " INTEGER)";
+                COLUMN_ING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_ING + " TEXT)";
 
         //Creates the note populate data table
         String CREATE_TABLE_USER_INPUT = "CREATE TABLE " +
                 TABLE_USER_INPUT + "(" +
-                COLUMN_INP_ID + " INTEGER PRIMARY KEY, " +
-                COLUMN_NOTES + " TEXT, " +
-                COLUMN_NOTES_LINK + " TEXT)";
+                COLUMN_INP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_NOTES + " TEXT)";
 
 
         //Creates all of the tables in SQL
@@ -83,6 +80,27 @@ public class RecipeDatabaseHandler extends SQLiteOpenHelper{
         database.close();
     }
 
+    public boolean deleteNotes(String name){
+        boolean result = false;
 
+        String sqlQuery = "SELECT * FROM " + TABLE_USER_INPUT +
+                " WHERE " + COLUMN_NOTES + " =\"" +
+                name + "\"";
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor myCursor = database.rawQuery(sqlQuery, null);
+        RecipeData myRecipe = null;
+
+        if(myCursor.moveToFirst()){
+            int tmpID = myCursor.getInt(0);
+
+            String where = COLUMN_INP_ID + "=?";
+            String[] whereArgs = {String.valueOf(tmpID)};
+            database.delete(TABLE_USER_INPUT, where, whereArgs);
+            myCursor.close();
+            result = true;
+        }
+        database.close();
+        return result;
+    }
 
 }

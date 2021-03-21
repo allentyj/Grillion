@@ -31,4 +31,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <ListView
+        android:id="@+id/shoppingListListView"
+        android:layout_width="410dp"
+        android:layout_height="529dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingListEditText" />
+
+    <Button
+        android:id="@+id/shoppingListAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="82dp"
+        android:text="Add"
+        app:layout_constraintBottom_toTopOf="@+id/shoppingListListView"
+        app:layout_constraintEnd_toStartOf="@+id/shoppingListClearButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingListTitleTextView" />
+
+    <Button
+        android:id="@+id/shoppingListClearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="82dp"
+        android:text="Clear"
+        app:layout_constraintBottom_toTopOf="@+id/shoppingListListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shoppingListAddButton"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingListTitleTextView" />
+
+    <EditText
+        android:id="@+id/shoppingListEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="165dp"
+        android:layout_marginBottom="5dp"
+        android:hint="ex. Large eggs"
+        app:layout_constraintBottom_toTopOf="@+id/shoppingListListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingListTitleTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

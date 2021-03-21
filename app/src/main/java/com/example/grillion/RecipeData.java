@@ -16,21 +16,14 @@ public class RecipeData {
     //Variables for TABLE_USER_INPUT
     private int mNoteID;
     private String mNote;
-    private String mNoteLink;
 
     //Constructors
-    public RecipeData(int id, String name, String link){
-        mPrimaryID = id;
-        mPrimaryName = name;
-        mPrimaryLink = link;
-    }
-
-    public RecipeData(int id, String name, String link, String note){
-        mPrimaryID = id;
-        mPrimaryName = name;
-        mPrimaryLink = link;
+    public RecipeData(int id, String note){
+        mNoteID = id;
         mNote = note;
     }
+
+    public RecipeData(String note){mNote = note;}
 
     //Getters and setters for TABLE_IDENTIFIERS
     public int getmPrimaryID() {return mPrimaryID;}
@@ -53,6 +46,4 @@ public class RecipeData {
     public void setmNoteID(int mNoteID) {this.mNoteID = mNoteID;}
     public String getmNote() {return mNote;}
     public void setmNote(String mNote) {this.mNote = mNote;}
-    public String getmNoteLink() {return mNoteLink;}
-    public void setmNoteLink(String mNoteLink) {this.mNoteLink = mNoteLink;}
 }

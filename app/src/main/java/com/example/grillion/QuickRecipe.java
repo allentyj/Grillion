@@ -12,6 +12,11 @@ import android.view.View;
 import java.util.ArrayList;
 
 public class QuickRecipe extends AppCompatActivity {
+    //Intent flags to prevent re-creating instances of running activity
+    private int mStep;
+    private static final String KEY_STEP = "step";
+    private static final boolean USE_FLAG = true;
+    private static final int mFlag = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
     private static final String DEBUG_TAG = "QuickRecipe";
 
@@ -28,6 +33,7 @@ public class QuickRecipe extends AppCompatActivity {
         getImages();
     }
 
+    //Gets the images and titles for each recyclerview item
     private void getImages(){
         Log.d(DEBUG_TAG, "initiateImageBitmaps is preparing bitmaps");
 
@@ -51,6 +57,7 @@ public class QuickRecipe extends AppCompatActivity {
         initiateRecyclerView3();
     }
 
+    //Initiates all of the recyclerviews for the page
     private void initiateRecyclerView(){
         Log.d(DEBUG_TAG, "InitiateRecyclerView initiated RecyclerView");
 
@@ -79,10 +86,29 @@ public class QuickRecipe extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    //Connected to the Arrow in the top left corner of the screen. Returns the user to the Main Activity (home page).
-    public void onQuickRecipeToHomeClick(View v){
-        startActivity(new Intent(QuickRecipe.this, MainActivity.class));
+    //Overrides for the intents and checking if an activity is already open
+    @Override
+    protected void onNewIntent(Intent intent){
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Bundle myData = getIntent().getExtras();
+        if(myData == null)
+            mStep = 0;
+        else
+            mStep = myData.getInt(KEY_STEP);
     }
 
+    //Connected to the Arrow in the top left corner of the screen. Returns the user to the Main Activity (home page).
+    public void onQuickRecipeToHomeClick(View v){
+        Intent myIntent = new Intent(this, MainActivity.class);
+        if(USE_FLAG)
+            myIntent.addFlags(mFlag);
+        myIntent.putExtra(KEY_STEP, mStep + 1);
+        startActivity(myIntent);
+    }
 
 }
