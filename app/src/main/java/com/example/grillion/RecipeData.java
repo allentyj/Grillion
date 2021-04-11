@@ -11,7 +11,6 @@ public class RecipeData {
     //Variables for TABLE_RECIPE_TO_LIST
     private int mIngID;
     private String mIngredient;
-    private String mIngQuantity;
 
     //Variables for TABLE_USER_INPUT
     private int mNoteID;
@@ -38,8 +37,6 @@ public class RecipeData {
     public void setmIngID(int mIngID) {this.mIngID = mIngID;}
     public String getmIngredient() {return mIngredient;}
     public void setmIngredient(String mIngredient) {this.mIngredient = mIngredient;}
-    public String getmIngQuantity() {return mIngQuantity;}
-    public void setmIngQuantity(String mIngQuantity) {this.mIngQuantity = mIngQuantity;}
 
     //Getters and setters for TABLE_USER_INPUT
     public int getmNoteID() {return mNoteID;}

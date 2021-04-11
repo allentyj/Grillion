@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class QuickRecipe extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class QuickRecipe extends AppCompatActivity {
     //My Variables
     private ArrayList<String> mRecipes = new ArrayList<>();
     private ArrayList<String> mImageURLs = new ArrayList<>();
+    private ArrayList<String> mVideoCode = new ArrayList<>();
 
 
     @Override
@@ -37,20 +39,26 @@ public class QuickRecipe extends AppCompatActivity {
     private void getImages(){
         Log.d(DEBUG_TAG, "initiateImageBitmaps is preparing bitmaps");
 
-        mImageURLs.add("https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700%2C636");
-        mRecipes.add("Tomato Sauce Gnocci");
+        mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1612970452582-O2HBCJQ8TVSAY5EOTO0R/ke17ZwdGBToddI8pDm48kBCaMk_a5jnPkzckNsOsCmN7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0vc___Vi-l6i_tO81lSXAWFK-5YqTXot-_p5YIxO6Alsb_bOgbgE6mRwf-vgKTQPMg/Screen+Shot+2021-02-10+at+9.19.38+AM.png?format=1000w");
+        mRecipes.add("Pizza in a Cup");
+        mVideoCode.add("8a7L0bFuE3o");
 
-        mImageURLs.add("https://images2.minutemediacdn.com/image/upload/c_crop,h_1126,w_2000,x_0,y_181/f_auto,q_auto,w_1100/v1554932288/shape/mentalfloss/12531-istock-637790866.jpg");
-        mRecipes.add("Extreme Burger");
+        mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1592926924606-VIGSZE8TQR9XO8U1VE9C/ke17ZwdGBToddI8pDm48kBOthgiqgVBR-96Q3yEVzSt7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0l6CcKX1G46X6yZteoeCRn_QheoGmMTFzEN8raAzG4fC-eBs4904tS0p89qslH4Obg/Screen+Shot+2020-06-23+at+11.41.26+AM.png?format=1000w");
+        mRecipes.add("Sweet Rolls");
+        mVideoCode.add("98R3fgPKmYs");
 
-        mImageURLs.add("https://www.helpguide.org/wp-content/uploads/fast-foods-candy-cookies-pastries-768.jpg");
-        mRecipes.add("The America");
+        mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1610470499351-CHX023N1JWY12YVIWV4W/ke17ZwdGBToddI8pDm48kGh9ZJ2O0qy0uKSL-_2aFaR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0tVKkOu97tLoEUCMOIXiAV46WLB4Mpo4oPXEhDdhWMhycxyyYCssjrvYNcG08yYyYQ/Screen+Shot+2021-01-12+at+10.53.36+AM.png?format=1000w");
+        mRecipes.add("Risotto Tricolore");
+        mVideoCode.add("D8SgdOGIEyU");
 
-        mImageURLs.add("https://www.wbcsd.org/var/site/storage/images/media/images/fresh_pa/80809-2-eng-GB/FRESH_PA_i1140.jpg");
-        mRecipes.add("Chicken and Brussel Sprouts Salad");
+        mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1609798571438-LRIS2O6DVLKX2KTEAIIE/ke17ZwdGBToddI8pDm48kOoVbW_hYFgN8dC9Hoa6IcAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dp5_RnQ3Jt1SmKAL6mKyZJ9K8E-jGEhLMOmY_jQWLgsSCjLISwBs8eEdxAxTptZAUg/Screen+Shot+2021-01-04+at+4.15.49+PM.png?format=1000w");
+        mRecipes.add("Sourdough Broccoli Pizza");
+        mVideoCode.add("8ti1quN-jKs");
 
-        mImageURLs.add("https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg");
-        mRecipes.add("French Toast With Honey Glaze");
+
+        mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1582671231444-8NQXF0P77BDFINRDL4ZZ/ke17ZwdGBToddI8pDm48kGh9ZJ2O0qy0uKSL-_2aFaR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0tVKkOu97tLoEUCMOIXiAV46WLB4Mpo4oPXEhDdhWMhycxyyYCssjrvYNcG08yYyYQ/image+%286%29.png?format=1000w");
+        mRecipes.add("Egg Sandwich");
+        mVideoCode.add("6JFVKnrE_d8");
 
         initiateRecyclerView();
         initiateRecyclerView2();

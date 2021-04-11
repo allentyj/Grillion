@@ -26,6 +26,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext;
     private ArrayList<String> mRecipes = new ArrayList<>();
     private ArrayList<String> mImageURLs = new ArrayList<>();
+    private ArrayList<String> mVideoCode = new ArrayList<>();
 
     public RecyclerViewAdapter(Context context, ArrayList<String> recipes, ArrayList<String> imageURLs){
         mContext = context;
@@ -57,10 +58,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.picture.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Log.d(DEBUG_TAG, "onClick was clicked." + mRecipes.get(position));
-                Toast.makeText(mContext, mRecipes.get(position), Toast.LENGTH_SHORT).show();
+                Log.d(DEBUG_TAG, "onClick: clicked on: " + mImageURLs.get(position));
 
-                //Put in here what recipe you are going to.
+                Intent intent = new Intent(mContext, RecipeLanding.class);
+                intent.putExtra("recipe_name", mRecipes.get(position));
+                intent.putExtra("video_code", mVideoCode.get(position));
+                mContext.startActivity(intent);
             }
         });
     }
