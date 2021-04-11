@@ -13,16 +13,14 @@ public class RecipeData {
     private String mIngredient;
 
     //Variables for TABLE_USER_INPUT
-    private int mNoteID;
+    private String mNoteID;
     private String mNote;
 
     //Constructors
-    public RecipeData(int id, String note){
-        mNoteID = id;
+    public RecipeData(String id, String note){
         mNote = note;
+        mNoteID = id;
     }
-
-    public RecipeData(String note){mNote = note;}
 
     //Getters and setters for TABLE_IDENTIFIERS
     public int getmPrimaryID() {return mPrimaryID;}
@@ -39,8 +37,8 @@ public class RecipeData {
     public void setmIngredient(String mIngredient) {this.mIngredient = mIngredient;}
 
     //Getters and setters for TABLE_USER_INPUT
-    public int getmNoteID() {return mNoteID;}
-    public void setmNoteID(int mNoteID) {this.mNoteID = mNoteID;}
+    public String getmNoteID() {return mNoteID;}
+    public void setmNoteID(String mNoteID) {this.mNoteID = mNoteID;}
     public String getmNote() {return mNote;}
     public void setmNote(String mNote) {this.mNote = mNote;}
 }

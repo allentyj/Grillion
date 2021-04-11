@@ -45,6 +45,7 @@ public class RecipeLanding extends YouTubeBaseActivity {
     private EditText mNoteEditText;
     private TextView mNoteTextView;
     private TextView mRecipeName;
+    private EditText mNoteIDEditText;
 
     //The IDs required for the YouTube player and debug log
     private YouTubePlayerView mYouTubePlayer;
@@ -63,6 +64,7 @@ public class RecipeLanding extends YouTubeBaseActivity {
         mNoteEditText = (EditText)findViewById(R.id.recipeLandingEditText);
         mNoteTextView = (TextView)findViewById(R.id.recipeLandingNotes);
         mRecipeName = (TextView)findViewById(R.id.recipeLandingRecipeName);
+        mNoteIDEditText = (EditText)findViewById(R.id.recipeIDEditText);
 
         //IDs for the YouTube player and the corresponding button
         mYouTubePlayer = (YouTubePlayerView)findViewById(R.id.youTubePlayer);
@@ -123,6 +125,36 @@ public class RecipeLanding extends YouTubeBaseActivity {
     };
 
 
+    //Adds user notes to Database, updates the notes heading
+    public void addNotesButtonClick(View view){
+        String note = mNoteEditText.getText().toString();
+        String id = mNoteIDEditText.getText().toString();
+        RecipeData recipeData = new RecipeData(note, id);
+
+        RecipeDatabaseHandler handler = new RecipeDatabaseHandler(this);
+        handler.addRecipeNote(recipeData);
+
+        mNoteEditText.setText("");
+        mNoteIDEditText.setText("");
+
+        mNoteTextView.setText("ID: " + id + "  -  " + note);
+    }
+
+    //Deletes recipe notes
+    public void deleteNotesButtonClick(View view){
+        String note = mNoteIDEditText.getText().toString();
+
+        RecipeDatabaseHandler handler = new RecipeDatabaseHandler(this);
+
+        boolean result = handler.deleteRecipeNote(note);
+
+        if(result){
+            mNoteIDEditText.setText("");
+            mNoteTextView.setText("No Notes Currently");
+        }
+        else
+            mIDTextView.setText("No match in records.");
+    }
 
 
     //Returns user to home page

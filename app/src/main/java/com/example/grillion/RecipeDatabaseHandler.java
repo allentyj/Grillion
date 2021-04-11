@@ -46,14 +46,14 @@ public class RecipeDatabaseHandler extends SQLiteOpenHelper{
 
         //Creates the recipe list table
         String CREATE_TABLE_RECIPE_TO_LIST = "CREATE TABLE " +
-                TABLE_IDENTIFIERS + "(" +
+                TABLE_RECIPE_TO_LIST + "(" +
                 COLUMN_ING_ID + " INTEGER PRIMARY KEY, " +
                 COLUMN_ING + " TEXT)";
 
         //Creates the note populate data table
         String CREATE_TABLE_USER_INPUT = "CREATE TABLE " +
                 TABLE_USER_INPUT + "(" +
-                COLUMN_INP_ID + " INTEGER PRIMARY KEY, " +
+                COLUMN_INP_ID + " STRING PRIMARY KEY, " +
                 COLUMN_NOTES + " TEXT)";
 
 
@@ -66,10 +66,38 @@ public class RecipeDatabaseHandler extends SQLiteOpenHelper{
     public void addRecipeNote(RecipeData recipeNote){
         ContentValues myValues = new ContentValues();
         myValues.put(COLUMN_NOTES, recipeNote.getmNote());
+        myValues.put(COLUMN_INP_ID, recipeNote.getmNoteID());
 
         SQLiteDatabase database = this.getWritableDatabase();
         database.insert(TABLE_USER_INPUT, null, myValues);
         database.close();
+    }
+
+    public boolean deleteRecipeNote(String note){
+        boolean result = false;
+
+        String sqlQuery = "SELECT * FROM " + TABLE_USER_INPUT +
+                " WHERE " + COLUMN_NOTES + " =\"" +
+                note + "\"";
+
+        SQLiteDatabase database = this.getWritableDatabase();
+
+        Cursor myCursor = database.rawQuery(sqlQuery, null);
+
+        RecipeData myRecipe = null;
+
+        if(myCursor.moveToFirst()){
+            int tmpID = myCursor.getInt(0);
+
+            String where = COLUMN_INP_ID + "=?";
+            String[] whereArgs = {String.valueOf(tmpID)};
+            database.delete(TABLE_USER_INPUT, where, whereArgs);
+            myCursor.close();
+            result = true;
+        }
+
+        database.close();
+        return result;
     }
 
     @Override

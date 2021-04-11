@@ -11,10 +11,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="560dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/recipeLandingUpdateButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
@@ -93,37 +90,40 @@
         android:id="@+id/recipeLandingEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="11dp"
-        android:layout_marginEnd="130dp"
+        android:layout_marginEnd="30dp"
         android:hint="Type to add notes"
         app:layout_constraintBottom_toTopOf="@+id/recipeLandingDeleteButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recipeIDEditText"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
-    <Button
-        android:id="@+id/recipeLandingUpdateButton"
+    <EditText
+        android:id="@+id/recipeIDEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="38dp"
-        android:text="Update"
-        app:layout_constraintBottom_toTopOf="@+id/recipeIDTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/recipeLandingDeleteButton" />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="50dp"
+        android:hint="ex. change"
+        app:layout_constraintBottom_toTopOf="@+id/recipeLandingDeleteButton"
+        app:layout_constraintEnd_toStartOf="@+id/recipeLandingEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/recipeLandingDeleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="67dp"
+        android:onClick="deleteNotesButtonClick"
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/recipeLandingUpdateButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/recipeLandingSaveButton"
         app:layout_constraintTop_toBottomOf="@+id/recipeLandingEditText" />
 
@@ -131,13 +131,15 @@
         android:id="@+id/recipeLandingSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="38dp"
+        android:onClick="addNotesButtonClick"
         android:text="Save"
         app:layout_constraintBottom_toTopOf="@+id/recipeIDTextView"
         app:layout_constraintEnd_toStartOf="@+id/recipeLandingDeleteButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipeIDEditText" />
 
     <ImageButton
         android:id="@+id/recipeLandingReturnButton"
