@@ -54,6 +54,7 @@ public class RecipeLanding extends YouTubeBaseActivity {
     private YouTubePlayer.OnInitializedListener mOnInitializedListener;
     private static final String YT_TAG = "RecipeLanding";
 
+    //Temporary Video ID to handle errors, populates first video in queue unless replaced
     private String videoEmbed = "8a7L0bFuE3o";
 
     @Override
