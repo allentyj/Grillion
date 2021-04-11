@@ -94,7 +94,7 @@ public class History extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recentlyMadeRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode);
         recyclerView.setAdapter(adapter);
     }
     private void initiateRecyclerView2(){
@@ -103,7 +103,7 @@ public class History extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recentlyFavoritedRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode);
         recyclerView.setAdapter(adapter);
     }
     private void initiateRecyclerView3(){
@@ -112,7 +112,7 @@ public class History extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.aBiteNostalgicRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode);
         recyclerView.setAdapter(adapter);
     }
 }

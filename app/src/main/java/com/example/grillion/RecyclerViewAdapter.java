@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -27,11 +28,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mRecipes = new ArrayList<>();
     private ArrayList<String> mImageURLs = new ArrayList<>();
     private ArrayList<String> mVideoCode = new ArrayList<>();
+    private String videoCode;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> recipes, ArrayList<String> imageURLs){
+    public RecyclerViewAdapter(Context context, ArrayList<String> recipes, ArrayList<String> imageURLs, ArrayList<String> videos){
         mContext = context;
         mRecipes = recipes;
         mImageURLs = imageURLs;
+        mVideoCode = videos;
 
     }
 
@@ -62,6 +65,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 Intent intent = new Intent(mContext, RecipeLanding.class);
                 intent.putExtra("recipe_name", mRecipes.get(position));
+                intent.putExtra("video_code", mVideoCode.get(position));
+
                 mContext.startActivity(intent);
             }
         });
@@ -71,6 +76,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemCount() {
         return mImageURLs.size();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         CircleImageView picture;

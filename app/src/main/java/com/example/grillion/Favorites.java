@@ -67,7 +67,7 @@ public class Favorites extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recentlyAddedRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode);
         recyclerView.setAdapter(adapter);
     }
     private void initiateRecyclerView2(){
@@ -76,7 +76,7 @@ public class Favorites extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.addYourThoughtsRecylerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode);
         recyclerView.setAdapter(adapter);
     }
     private void initiateRecyclerView3(){
@@ -85,7 +85,7 @@ public class Favorites extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.unratedRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode);
         recyclerView.setAdapter(adapter);
     }
 

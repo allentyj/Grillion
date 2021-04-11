@@ -52,6 +52,7 @@ public class RecipeLanding extends YouTubeBaseActivity {
     private Button mPlayButton;
     private YouTubePlayer.OnInitializedListener mOnInitializedListener;
     private static final String YT_TAG = "RecipeLanding";
+
     private String videoEmbed = "8a7L0bFuE3o";
 
     @Override
@@ -82,7 +83,6 @@ public class RecipeLanding extends YouTubeBaseActivity {
                 Log.d(YT_TAG, "Initialized YT Player");
 
                 youTubePlayer.loadVideo(videoEmbed);
-
             }
 
             @Override
@@ -109,12 +109,13 @@ public class RecipeLanding extends YouTubeBaseActivity {
     //Getters and setters for the information from the RecyclerViewAdapter
     private void getIncomingIntent(){
         Log.d(TAG, "Getting incoming intent : checking for incoming intent");
-        if(getIntent().hasExtra("recipe_name")){
+        if(getIntent().hasExtra("recipe_name") && getIntent().hasExtra("video_code")){
             Log.d(TAG, "Found intent extras");
 
             String recipeName = getIntent().getStringExtra("recipe_name");
-
+            String videoCode = getIntent().getStringExtra("video_code");
             setRecipe(recipeName);
+            setCode(videoCode);
         }
     }
 
@@ -123,6 +124,12 @@ public class RecipeLanding extends YouTubeBaseActivity {
         Log.d(TAG, "setting recipe name");
         mRecipeName.setText(recipeName);
     };
+
+    private void setCode(String videoCode){
+        Log.d(TAG,"setting video code");
+        videoEmbed = videoCode;
+    }
+
 
 
     //Adds user notes to Database, updates the notes heading
