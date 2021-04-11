@@ -62,7 +62,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 Intent intent = new Intent(mContext, RecipeLanding.class);
                 intent.putExtra("recipe_name", mRecipes.get(position));
-                intent.putExtra("video_code", mVideoCode.get(position));
                 mContext.startActivity(intent);
             }
         });
