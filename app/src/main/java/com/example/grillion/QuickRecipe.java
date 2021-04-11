@@ -19,6 +19,7 @@ public class QuickRecipe extends AppCompatActivity {
     private static final boolean USE_FLAG = true;
     private static final int mFlag = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 
+    //Debug tag for the try/catch
     private static final String DEBUG_TAG = "QuickRecipe";
 
     //My Variables
@@ -35,7 +36,7 @@ public class QuickRecipe extends AppCompatActivity {
         getImages();
     }
 
-    //Gets the images and titles for each recyclerview item
+    //Gives the RecyclerView the images, videos, and recipe titles to pass to the RecipeLanding Activity
     private void getImages(){
         Log.d(DEBUG_TAG, "initiateImageBitmaps is preparing bitmaps");
 
@@ -65,7 +66,7 @@ public class QuickRecipe extends AppCompatActivity {
         initiateRecyclerView3();
     }
 
-    //Initiates all of the recyclerviews for the page
+    //All three commands for initiating the RecyclerViews with the given images.
     private void initiateRecyclerView(){
         Log.d(DEBUG_TAG, "InitiateRecyclerView initiated RecyclerView");
 

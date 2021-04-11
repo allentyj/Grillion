@@ -41,6 +41,7 @@ public class RecipeLanding extends YouTubeBaseActivity {
     private static final int mFlag = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
     private static final String TAG = "RecipeLanding";
 
+    //Global variables for the elements in the XML
     private TextView mIDTextView;
     private EditText mNoteEditText;
     private TextView mNoteTextView;
@@ -125,6 +126,7 @@ public class RecipeLanding extends YouTubeBaseActivity {
         mRecipeName.setText(recipeName);
     };
 
+    //Changes the default YouTube embed code to that of the queued recipe
     private void setCode(String videoCode){
         Log.d(TAG,"setting video code");
         videoEmbed = videoCode;
@@ -190,6 +192,7 @@ public class RecipeLanding extends YouTubeBaseActivity {
     }
 
 
+    //Getters and setters for the Note TextView
     public TextView getmNoteTextView() {
         return mNoteTextView;
     }

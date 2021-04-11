@@ -38,6 +38,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     }
 
+
+    //Creates the design for the RecyclerView, with debug tags in case of crash at each step
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -63,20 +65,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View view) {
                 Log.d(DEBUG_TAG, "onClick: clicked on: " + mImageURLs.get(position));
 
-                Intent intent = new Intent(mContext, RecipeLanding.class);
-                intent.putExtra("recipe_name", mRecipes.get(position));
-                intent.putExtra("video_code", mVideoCode.get(position));
+                //Try/Catch to determine if the RecyclerView is properly passing recipe data over to RecipeLanding
+                try {
+                    Intent intent = new Intent(mContext, RecipeLanding.class);
+                    intent.putExtra("recipe_name", mRecipes.get(position));
+                    intent.putExtra("video_code", mVideoCode.get(position));
 
-                mContext.startActivity(intent);
+                    mContext.startActivity(intent);
+                } catch(Exception exception){
+                    Log.d(DEBUG_TAG, "Something went wrong populating recipe data");
+                }
             }
         });
     }
 
+    //Used to determine size (length) of RecyclerView
     @Override
     public int getItemCount() {
         return mImageURLs.size();
     }
 
+    //Populates the visuals of the RecyclerView
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         CircleImageView picture;
