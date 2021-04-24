@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Linked to the Question Mark picture on the main page, takes the user to the Help activity on click.
     public void onHelpClick(View v){
-        Intent myIntent = new Intent(this, RecipeLanding.class);
+        Intent myIntent = new Intent(this, Help.class);
         if(USE_FLAG)
             myIntent.addFlags(mFlag);
         myIntent.putExtra(KEY_STEP, mStep + 1);

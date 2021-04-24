@@ -1,36 +1,22 @@
 package com.example.grillion;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-import org.w3c.dom.Text;
-
 import java.io.BufferedReader;
-import java.io.InputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
-
-import static java.lang.System.load;
 
 public class RecipeLanding extends YouTubeBaseActivity {
 
@@ -47,6 +33,8 @@ public class RecipeLanding extends YouTubeBaseActivity {
     private TextView mNoteTextView;
     private TextView mRecipeName;
     private EditText mNoteIDEditText;
+
+    private TextView mInstructions;
 
     //The IDs required for the YouTube player and debug log
     private YouTubePlayerView mYouTubePlayer;
@@ -67,6 +55,7 @@ public class RecipeLanding extends YouTubeBaseActivity {
         mNoteTextView = (TextView)findViewById(R.id.recipeLandingNotes);
         mRecipeName = (TextView)findViewById(R.id.recipeLandingRecipeName);
         mNoteIDEditText = (EditText)findViewById(R.id.recipeIDEditText);
+        mInstructions = (TextView)findViewById(R.id.recipeInformation);
 
         //IDs for the YouTube player and the corresponding button
         mYouTubePlayer = (YouTubePlayerView)findViewById(R.id.youTubePlayer);
@@ -74,6 +63,8 @@ public class RecipeLanding extends YouTubeBaseActivity {
 
         //Gets intents from RecyclerViewAdapter
         getIncomingIntent();
+
+
 
         Log.d(YT_TAG, "onCreate: Starting");
 
@@ -115,8 +106,13 @@ public class RecipeLanding extends YouTubeBaseActivity {
 
             String recipeName = getIntent().getStringExtra("recipe_name");
             String videoCode = getIntent().getStringExtra("video_code");
+            String instructions = getIntent().getStringExtra("directions");
+            String ingred = getIntent().getStringExtra("ingredients");
+
             setRecipe(recipeName);
             setCode(videoCode);
+            setInstructions(instructions);
+            //setIngList(ingred);
         }
     }
 
@@ -131,6 +127,39 @@ public class RecipeLanding extends YouTubeBaseActivity {
         Log.d(TAG,"setting video code");
         videoEmbed = videoCode;
     }
+
+    private void setInstructions(String instructions){
+      Log.d(TAG, "setting directions");
+      BufferedReader reader = null;
+      StringBuilder text = new StringBuilder();
+
+      try {
+          reader = new BufferedReader(
+                  new InputStreamReader(getAssets().open(instructions)));
+
+          String mLine;
+          while ((mLine = reader.readLine()) != null) {
+              text.append(mLine);
+              text.append('\n');
+          }
+      } catch (IOException e) {
+          Toast.makeText(getApplicationContext(), "Error reading file!", Toast.LENGTH_LONG).show();
+          e.printStackTrace();
+      } finally {
+          if (reader != null){
+              try {
+                  reader.close();
+              } catch (IOException e) {
+                  Log.d(TAG, "Failed to load instructions");
+              }
+          }
+      }
+      mInstructions.setText((CharSequence) text);
+    };
+
+    //private void setIngList(String ingred){
+        //Log.d(TAG, "setting ingredients");
+    //}
 
 
 

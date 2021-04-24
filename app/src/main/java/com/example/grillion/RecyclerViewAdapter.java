@@ -28,13 +28,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mRecipes = new ArrayList<>();
     private ArrayList<String> mImageURLs = new ArrayList<>();
     private ArrayList<String> mVideoCode = new ArrayList<>();
+    //TODO Implement Text files and recipe ingredients
+    private ArrayList<String> mText = new ArrayList<>();
+    private ArrayList<String> mIngredients = new ArrayList<>();
+
+
     private String videoCode;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> recipes, ArrayList<String> imageURLs, ArrayList<String> videos){
+    public RecyclerViewAdapter(Context context, ArrayList<String> recipes, ArrayList<String> imageURLs, ArrayList<String> videos, ArrayList<String> text, ArrayList<String> ingredients){
         mContext = context;
         mRecipes = recipes;
         mImageURLs = imageURLs;
         mVideoCode = videos;
+        mText = text;
+        mIngredients = ingredients;
 
     }
 
@@ -70,6 +77,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     Intent intent = new Intent(mContext, RecipeLanding.class);
                     intent.putExtra("recipe_name", mRecipes.get(position));
                     intent.putExtra("video_code", mVideoCode.get(position));
+                    intent.putExtra("directions", mText.get(position));
+                    intent.putExtra("ingredients", mIngredients.get(position));
 
                     mContext.startActivity(intent);
                 } catch(Exception exception){

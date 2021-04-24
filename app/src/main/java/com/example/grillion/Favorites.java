@@ -25,6 +25,8 @@ public class Favorites extends AppCompatActivity {
     private ArrayList<String> mRecipes = new ArrayList<>();
     private ArrayList<String> mImageURLs = new ArrayList<>();
     private ArrayList<String> mVideoCode = new ArrayList<>();
+    private ArrayList<String> mText = new ArrayList<>();
+    private ArrayList<String> mIngredients = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,23 +43,33 @@ public class Favorites extends AppCompatActivity {
         mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1612970452582-O2HBCJQ8TVSAY5EOTO0R/ke17ZwdGBToddI8pDm48kBCaMk_a5jnPkzckNsOsCmN7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0vc___Vi-l6i_tO81lSXAWFK-5YqTXot-_p5YIxO6Alsb_bOgbgE6mRwf-vgKTQPMg/Screen+Shot+2021-02-10+at+9.19.38+AM.png?format=1000w");
         mRecipes.add("Pizza in a Cup");
         mVideoCode.add("8a7L0bFuE3o");
+        mText.add("pizzacup.txt");
+        mIngredients.add("flour, baking powder, baking soda, milk, olive oil, pizza sauce, mozzarella, pepperoni");
 
         mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1592926924606-VIGSZE8TQR9XO8U1VE9C/ke17ZwdGBToddI8pDm48kBOthgiqgVBR-96Q3yEVzSt7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0l6CcKX1G46X6yZteoeCRn_QheoGmMTFzEN8raAzG4fC-eBs4904tS0p89qslH4Obg/Screen+Shot+2020-06-23+at+11.41.26+AM.png?format=1000w");
         mRecipes.add("Sweet Rolls");
         mVideoCode.add("98R3fgPKmYs");
+        mText.add("sweetrolls.txt");
+        mIngredients.add("flour, baking powder, baking soda, milk, sugar, egg, butter");
 
         mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1610470499351-CHX023N1JWY12YVIWV4W/ke17ZwdGBToddI8pDm48kGh9ZJ2O0qy0uKSL-_2aFaR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0tVKkOu97tLoEUCMOIXiAV46WLB4Mpo4oPXEhDdhWMhycxyyYCssjrvYNcG08yYyYQ/Screen+Shot+2021-01-12+at+10.53.36+AM.png?format=1000w");
         mRecipes.add("Risotto Tricolore");
         mVideoCode.add("D8SgdOGIEyU");
+        mText.add("risotto.txt");
+        mIngredients.add("cheese, rice, onion, chicken, garlic");
 
         mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1609798571438-LRIS2O6DVLKX2KTEAIIE/ke17ZwdGBToddI8pDm48kOoVbW_hYFgN8dC9Hoa6IcAUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dp5_RnQ3Jt1SmKAL6mKyZJ9K8E-jGEhLMOmY_jQWLgsSCjLISwBs8eEdxAxTptZAUg/Screen+Shot+2021-01-04+at+4.15.49+PM.png?format=1000w");
         mRecipes.add("Sourdough Broccoli Pizza");
         mVideoCode.add("8ti1quN-jKs");
+        mText.add("brocpizza.txt");
+        mIngredients.add("flour, baking powder, baking soda, milk, olive oil, pizza sauce, mozzarella, broccoli");
 
 
         mImageURLs.add("https://images.squarespace-cdn.com/content/v1/590be7fd15d5dbc6bf3e22d0/1582671231444-8NQXF0P77BDFINRDL4ZZ/ke17ZwdGBToddI8pDm48kGh9ZJ2O0qy0uKSL-_2aFaR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0tVKkOu97tLoEUCMOIXiAV46WLB4Mpo4oPXEhDdhWMhycxyyYCssjrvYNcG08yYyYQ/image+%286%29.png?format=1000w");
         mRecipes.add("Egg Sandwich");
         mVideoCode.add("6JFVKnrE_d8");
+        mText.add("eggsandwich.txt");
+        mIngredients.add("egg, bread, hot sauce, bacon");
 
         initiateRecyclerView();
         initiateRecyclerView2();
@@ -72,7 +84,7 @@ public class Favorites extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recentlyAddedRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode, mText, mIngredients);
         recyclerView.setAdapter(adapter);
     }
     private void initiateRecyclerView2(){
@@ -81,7 +93,7 @@ public class Favorites extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.addYourThoughtsRecylerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode, mText, mIngredients);
         recyclerView.setAdapter(adapter);
     }
     private void initiateRecyclerView3(){
@@ -90,7 +102,7 @@ public class Favorites extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.unratedRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mRecipes, mImageURLs, mVideoCode, mText, mIngredients);
         recyclerView.setAdapter(adapter);
     }
 
