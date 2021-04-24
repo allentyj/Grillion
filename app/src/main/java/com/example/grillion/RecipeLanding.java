@@ -1,6 +1,7 @@
 package com.example.grillion;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +16,10 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
 
 public class RecipeLanding extends YouTubeBaseActivity {
 
@@ -33,6 +36,9 @@ public class RecipeLanding extends YouTubeBaseActivity {
     private TextView mNoteTextView;
     private TextView mRecipeName;
     private EditText mNoteIDEditText;
+    private EditText mEmailAddress;
+
+    private Button mSendEmail;
 
     private TextView mInstructions;
 
@@ -60,6 +66,17 @@ public class RecipeLanding extends YouTubeBaseActivity {
         //IDs for the YouTube player and the corresponding button
         mYouTubePlayer = (YouTubePlayerView)findViewById(R.id.youTubePlayer);
         mPlayButton = (Button)findViewById(R.id.playButtonView);
+
+        //Recipe email handler
+        mSendEmail = (Button)findViewById(R.id.emailButton);
+        mEmailAddress = (EditText)findViewById(R.id.emailEditText);
+
+        mSendEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendRecipe();
+            }
+        });
 
         //Gets intents from RecyclerViewAdapter
         getIncomingIntent();
@@ -97,7 +114,6 @@ public class RecipeLanding extends YouTubeBaseActivity {
     }
 
 
-
     //Getters and setters for the information from the RecyclerViewAdapter
     private void getIncomingIntent(){
         Log.d(TAG, "Getting incoming intent : checking for incoming intent");
@@ -112,8 +128,25 @@ public class RecipeLanding extends YouTubeBaseActivity {
             setRecipe(recipeName);
             setCode(videoCode);
             setInstructions(instructions);
+
             //setIngList(ingred);
         }
+    }
+
+    //Sends email version of recipe
+    private void sendRecipe(){
+        String emailRecipient = mEmailAddress.getText().toString();
+        String instructions = getIntent().getStringExtra("directions");
+
+        String recipe = mInstructions.getText().toString();
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailRecipient});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Recipe from Grillion");
+        intent.putExtra(Intent.EXTRA_TEXT, recipe);
+
+        intent.setType("message/rfc822");
+        startActivity(Intent.createChooser(intent, "Choose an email client"));
     }
 
     //Changes recipe name
@@ -128,6 +161,8 @@ public class RecipeLanding extends YouTubeBaseActivity {
         videoEmbed = videoCode;
     }
 
+
+    //Sets the instructions and ingredients list on the recipe landing
     private void setInstructions(String instructions){
       Log.d(TAG, "setting directions");
       BufferedReader reader = null;
@@ -229,6 +264,5 @@ public class RecipeLanding extends YouTubeBaseActivity {
     public void setmNoteTextView(TextView mNoteTextView) {
         this.mNoteTextView = mNoteTextView;
     }
-
 
 }
